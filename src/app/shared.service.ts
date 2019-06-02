@@ -5,9 +5,7 @@ import { Observable } from 'rxjs';
 export interface GitHubUser{
   login: string;
   id: number;
-  site_admin: boolean;
   name: string;
-  followers: number;
 }
 
 @Injectable({
@@ -17,7 +15,7 @@ export class SharedService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getGoogleMapData(username): Observable<GitHubUser> {
+  public getGitHubData(username): Observable<GitHubUser> {
     const options = {
       headers: new HttpHeaders({
         'content-Type': 'application/json'

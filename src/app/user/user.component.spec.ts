@@ -3,23 +3,23 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserComponent } from './user.component';
 
 describe('UserComponent', () => {
-  let component: UserComponent;
-  let fixture: ComponentFixture<UserComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserComponent ]
+      declarations: [UserComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(UserComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  function setup() {
+    const fixture: ComponentFixture<UserComponent> = TestBed.createComponent(UserComponent);
+    const component: UserComponent = fixture.componentInstance;
+
+    return { fixture, component }
+  }
 
   it('should create', () => {
+    let { component } = setup();
     expect(component).toBeTruthy();
   });
 });

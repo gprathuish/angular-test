@@ -9,9 +9,24 @@ import { UserAsyncService } from '../user-async.service';
 })
 export class UserAsyncComponent implements OnInit {
 
-  constructor() { }
+  isLoggedIn = false;
+  user: { name: string };
+  userDetail;
+  systemError = false;
+  systemErrorMessage = '';
+  constructor(private userAsyncService: UserAsyncService) {}
 
   ngOnInit() {
+    this.userAsyncService = this.userAsyncService.getUserDetails().subscribe(
+      (respone: string) => {
+        this.userDetail = respone;
+        this.isLoggedIn = true;
+      },
+      (error: string) => {
+        this.systemError = true;
+        this.systemErrorMessage = error;
+      }
+    );
   }
 
 }

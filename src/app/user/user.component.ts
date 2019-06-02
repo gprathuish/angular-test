@@ -9,8 +9,18 @@ import { UserService } from '../user.service';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  user: { name: string };
+  isUserLoggedIn = false;
+  userDetail;
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
+    this.userDetail = this.userService.getUser();
+    if (this.userDetail) {
+      this.user = this.userDetail;
+      this.isUserLoggedIn = true;
+    } else {
+      this.isUserLoggedIn = false;
+    }
   }
 }
